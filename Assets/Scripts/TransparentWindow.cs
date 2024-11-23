@@ -13,6 +13,7 @@ public class TransparentWindow : MonoBehaviour
     const int GWL_EXSTYLE = -20;
     const uint WS_EX_LAYERED = 0x00080000;
     const uint WS_EX_TRANSPARENT = 0x00000020;
+    const uint LWA_COLORKEY = 0X00000001;
 
     static readonly IntPtr PTR_TOP = new IntPtr(-1);
 
@@ -39,6 +40,9 @@ public class TransparentWindow : MonoBehaviour
     [DllImport("user32.dll")]
     private static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndAfter, int x, int y, int cx, int cy, uint uFlags);
 
+    [DllImport("user32.dll")]
+    private static extern int SetLayeredWindowAttributes(IntPtr hWnd, uint crKey, byte bAlpha, uint dwFlags);
+    
 
     /*
     Controls access to the current window frame based on size in struct.
@@ -61,7 +65,8 @@ public class TransparentWindow : MonoBehaviour
         MARGINS margins = new MARGINS { cxLeftWidth = -1 };
         DwmExtendFrameIntoClientArea(ptr, ref margins);
 
-        SetWindowLong(ptr, GWL_EXSTYLE, WS_EX_LAYERED | WS_EX_TRANSPARENT);
+        SetWindowLong(ptr, GWL_EXSTYLE, WS_EX_LAYERED);
+        SetLayeredWindowAttributes(ptr,0,0,LWA_COLORKEY);
 
         SetWindowPos(ptr,PTR_TOP,0,0,0,0,0);
 
