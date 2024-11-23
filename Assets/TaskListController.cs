@@ -32,7 +32,7 @@ public class TaskListController : MonoBehaviour
     IEnumerator toggleTaskList(){
 
         LeanTween.moveLocalX(gameObject,
-            tasksOpen ? -1000f : -780f,
+            tasksOpen ? -1200f : -780f,
             0.3f
         );
         LeanTween.moveLocalX(button,

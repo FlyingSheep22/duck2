@@ -34,6 +34,11 @@ public class MenuButtons : MonoBehaviour
         0.3f).setIgnoreTimeScale(true);
         yield return new WaitForSecondsRealtime(0.3f);
 
+        // Save data inputted to Dont Destroy On Load
+        if (timerSettingsOpen){
+            SettingsData.instance.SaveSettings();
+        }
+
         timerSettings.SetActive(!timerSettingsOpen);
         timerSettings.GetComponent<CanvasGroup>().interactable = true;
 
