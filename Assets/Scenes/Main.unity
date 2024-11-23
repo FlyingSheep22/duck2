@@ -749,7 +749,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 431798966}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -758,11 +758,11 @@ RectTransform:
   - {fileID: 633534576}
   - {fileID: 1551236383}
   - {fileID: 1891566786}
-  m_Father: {fileID: 1816855063}
+  m_Father: {fileID: 1792158099}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 840, y: 420.11102}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &431798968
@@ -4017,7 +4017,7 @@ GameObject:
   - component: {fileID: 1792158103}
   - component: {fileID: 1792158104}
   - component: {fileID: 1792158106}
-  - component: {fileID: 1792158105}
+  - component: {fileID: 1792158107}
   m_Layer: 5
   m_Name: DUck
   m_TagString: Untagged
@@ -4036,12 +4036,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 431798967}
   m_Father: {fileID: 1816855063}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 120, y: 120}
+  m_AnchoredPosition: {x: -110, y: 120}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1792158100
@@ -4168,18 +4169,6 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 0.58765894, b: 0.37421376, a: 1}
   m_EffectDistance: {x: 6, y: 6}
   m_UseGraphicAlpha: 0
---- !u!114 &1792158105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1792158098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 332de5b37fdf7e946860a1197cbe170b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1792158106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4192,6 +4181,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332de5b37fdf7e946860a1197cbe170b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1792158107
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792158098}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9b228c8b142fe564e8050d17d348062e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1796818658
 GameObject:
   m_ObjectHideFlags: 0
@@ -4422,7 +4432,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1792158099}
-  - {fileID: 431798967}
   - {fileID: 2065287122}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
