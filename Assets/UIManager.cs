@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        duckAnim = duck.GetComponent<Animator>();
+        //duckAnim = duck.GetComponent<Animator>();
     }
 
     
