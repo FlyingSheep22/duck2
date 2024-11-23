@@ -48,7 +48,7 @@ public class UIManager : MonoBehaviour
         RectTransform duckTr = duck.GetComponent<RectTransform>();
 
         while (duckTr.anchoredPosition.x <= 125){
-            duckTr.anchoredPosition += new Vector2(50 * Time.deltaTime, 0);
+            duckTr.anchoredPosition += new Vector2(70 * Time.deltaTime, 0);
             yield return null;
         }
 
