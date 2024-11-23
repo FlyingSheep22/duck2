@@ -28,6 +28,8 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+
+        //duckAnim = duck.GetComponent<Animator>();
         anim = duck.GetComponent<AnimationBehaviourController>();
     }
 
