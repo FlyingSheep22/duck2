@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] DuckControls duck;
     
 
-    private Animator duckAnim;
+    private AnimationBehaviourController anim;
 
     public static UIManager instance;
 
@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        duckAnim = duck.GetComponent<Animator>();
+        anim = duck.GetComponent<AnimationBehaviourController>();
     }
 
     
@@ -48,7 +48,7 @@ public class UIManager : MonoBehaviour
             yield return null;
         }
 
-        duckAnim.SetTrigger("Resting");
+        anim.SetIdle();
         State = "idle";
     }
 
