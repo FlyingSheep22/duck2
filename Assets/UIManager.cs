@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] CanvasGroup menuButtons;
     [SerializeField] CanvasGroup timerSettings;
+    [SerializeField] CanvasGroup welcomeMessage;
     [SerializeField] MenuButtons menu;
     [SerializeField] DuckControls duck;
     
@@ -37,6 +38,7 @@ public class UIManager : MonoBehaviour
 
         menuButtons.alpha = 0;
         timerSettings.alpha = 0;
+        welcomeMessage.alpha = 0;
     } 
 
 
@@ -47,6 +49,11 @@ public class UIManager : MonoBehaviour
             duckTr.anchoredPosition += new Vector2(50 * Time.deltaTime, 0);
             yield return null;
         }
+
+        LeanTween.alphaCanvas(welcomeMessage.GetComponent<CanvasGroup>(),
+        false ? 0f : 1f, 
+        0.3f).setIgnoreTimeScale(true);
+        yield return new WaitForSecondsRealtime(0.3f);
 
         anim.SetIdle();
         State = "idle";
