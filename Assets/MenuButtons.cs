@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Timers;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuButtons : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class MenuButtons : MonoBehaviour
     private bool timerSettingsOpen = false;
 
     public void StartPomo(){
-
+        SceneManager.LoadScene(1);
     }
 
 

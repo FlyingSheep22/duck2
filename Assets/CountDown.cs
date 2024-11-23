@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEditor;
+using Unity.VisualScripting;
 
 public class CountDown : MonoBehaviour
 {
@@ -22,12 +23,21 @@ public class CountDown : MonoBehaviour
     public Sprite startImage;
     public Button button;
 
+
+    private int FocusTime;
+    private int BreakTime;
+
     // Start is called before the first frame update
     void Start()
     {
-        timeRemaining = 25*60-1;
-        Debug.Log("" + gameObject + timerText);
+
+        FocusTime = SettingsData.instance != null ? SettingsData.instance.focusTime : 25;
+        BreakTime = SettingsData.instance != null ? SettingsData.instance.breakTime : 5;
+
+        timeRemaining = FocusTime * 60 - 1;
+
     }
+
 
     //start 
     public void startPauseClick()
@@ -49,8 +59,8 @@ public class CountDown : MonoBehaviour
     // RESTART
     public void restart()
     {
-        timeRemaining = twentyFiveMin;
-        timerIsRunning = true ;
+        timeRemaining = FocusTime*60;
+        timerIsRunning = true;
         breakTime = false;
 
         //change into pause button
@@ -87,7 +97,7 @@ public class CountDown : MonoBehaviour
                 // if a 25 min timer ran out
                 if(!breakTime)
                 {
-                    timeRemaining = fiveMin;
+                    timeRemaining = BreakTime * 60;
                     //add message to tell user break start here later
                     timerIsRunning = true;
                     breakTime = true;
@@ -96,7 +106,7 @@ public class CountDown : MonoBehaviour
                 else
                 {
                     breakTime = false;
-                    timeRemaining = twentyFiveMin;
+                    timeRemaining = FocusTime * 60;
                     //add message to tell user work start here later
                     timerIsRunning = true;
                 }
