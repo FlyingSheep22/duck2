@@ -26,6 +26,7 @@ public class CountDown : MonoBehaviour
     void Start()
     {
         timeRemaining = 25*60-1;
+        Debug.Log("" + gameObject + timerText);
     }
 
     //start 
