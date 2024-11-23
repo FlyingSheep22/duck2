@@ -20,7 +20,7 @@ public class DuckControls : MonoBehaviour
         }
 
         if (welcomeMessage.alpha == 1){
-            welcomeMessage.alpha = 0;
+            LeanTween.alphaCanvas(welcomeMessage,0,0.3f);
         }
 
         toggleButtons();

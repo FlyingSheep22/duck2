@@ -24,5 +24,9 @@ public class AnimationBehaviourController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S)){
             SetStretch();
         }
+
+        else if (Input.GetKeyDown(KeyCode.W)){
+            
+        }
     }
 }
