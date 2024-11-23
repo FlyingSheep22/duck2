@@ -9,6 +9,7 @@ public class CountDown : MonoBehaviour
 {
 
     [SerializeField] TextMeshProUGUI timerText;
+    [SerializeField] Animator anim;
     public float timeRemaining = 25*60;
     public bool timerIsRunning = false;
     public bool breakTime = false;
@@ -27,6 +28,9 @@ public class CountDown : MonoBehaviour
     {
         timeRemaining = 25*60-1;
         Debug.Log("" + gameObject + timerText);
+        anim.SetBool("bop",false);
+        Debug.Log("1");
+
     }
 
     //start 
@@ -49,6 +53,9 @@ public class CountDown : MonoBehaviour
     // RESTART
     public void restart()
     {
+        anim.SetBool("bop",false);
+        Debug.Log("2");
+
         timeRemaining = twentyFiveMin;
         timerIsRunning = true ;
         breakTime = false;
@@ -82,19 +89,19 @@ public class CountDown : MonoBehaviour
             else
             {
                 Debug.Log("Time has run out!");
-                timeRemaining = 0;
+                //timeRemaining = 0;
                 timerIsRunning = false;
                 // if a 25 min timer ran out
                 if(!breakTime)
                 {
-                    timeRemaining = fiveMin;
-                    //add message to tell user break start here later
-                    timerIsRunning = true;
-                    breakTime = true;
+                    timeRemaining = fiveMin -1;
+                    StartCoroutine("delay"); //delayed start 5 min timer
                 }
                 //if 5 min timer ran out
                 else
                 {
+                    anim.SetBool("bop",false);
+                    Debug.Log("3");
                     breakTime = false;
                     timeRemaining = twentyFiveMin;
                     //add message to tell user work start here later
@@ -106,5 +113,19 @@ public class CountDown : MonoBehaviour
         {
             DisplayTime(timeRemaining);
         }
+    }
+
+    // delayed start 5 min timer
+    IEnumerator delay()
+    {
+        DisplayTime(timeRemaining);
+        
+        yield return new WaitForSecondsRealtime(3f);
+        anim.SetBool("bop",true);
+        Debug.Log("4");
+
+        //add message to tell user break start here later
+        timerIsRunning = true;
+        breakTime = true;
     }
 }
