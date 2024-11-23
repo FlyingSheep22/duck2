@@ -20,10 +20,17 @@ public class DuckControls : MonoBehaviour
         }
 
         if (welcomeMessage.alpha == 1){
-            LeanTween.alphaCanvas(welcomeMessage,0,0.3f);
+            StartCoroutine("MessageDissapear");
         }
 
         toggleButtons();
+    }
+
+    IEnumerator MessageDissapear(){
+        LeanTween.alphaCanvas(welcomeMessage,0,0.3f);
+        yield return new WaitForSecondsRealtime(0.3f);
+
+        welcomeMessage.gameObject.SetActive(false);
     }
 
     public void toggleButtons(){

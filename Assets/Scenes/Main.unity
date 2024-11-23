@@ -1209,8 +1209,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 477990698}
+  - component: {fileID: 477990699}
   m_Layer: 5
-  m_Name: WelcomeMessage
+  m_Name: Message
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1237,6 +1238,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &477990699
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477990697}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &498729037
 GameObject:
   m_ObjectHideFlags: 0
@@ -5118,6 +5131,7 @@ MonoBehaviour:
   buttons: {fileID: 431798966}
   outline: {fileID: 0}
   menu: {fileID: 431798969}
+  welcomeMessage: {fileID: 477990699}
 --- !u!95 &1792158107
 Animator:
   serializedVersion: 5
@@ -5151,6 +5165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04c69303ca24dc74d92965c620ca900c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  message: {fileID: 1138999543}
 --- !u!1 &1796818658
 GameObject:
   m_ObjectHideFlags: 0
@@ -5405,6 +5421,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuButtons: {fileID: 431798968}
   timerSettings: {fileID: 2065287123}
+  welcomeMessage: {fileID: 477990699}
   menu: {fileID: 431798969}
   duck: {fileID: 1792158103}
   State: Idle
