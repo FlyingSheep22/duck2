@@ -9,6 +9,7 @@ public class DuckControls : MonoBehaviour
     [SerializeField] GameObject buttons;
     [SerializeField] Outline outline;
     [SerializeField] MenuButtons menu;
+    [SerializeField] CanvasGroup welcomeMessage;
  
     private bool buttonsOpen = false;
 
@@ -16,6 +17,10 @@ public class DuckControls : MonoBehaviour
         if (UIManager.instance.State == "timerSettings"){
             menu.TimerSettings();
             return;
+        }
+
+        if (welcomeMessage.alpha == 1){
+            LeanTween.alphaCanvas(welcomeMessage,0,0.3f);
         }
 
         toggleButtons();

@@ -7,11 +7,12 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] CanvasGroup menuButtons;
     [SerializeField] CanvasGroup timerSettings;
+    [SerializeField] CanvasGroup welcomeMessage;
     [SerializeField] MenuButtons menu;
     [SerializeField] DuckControls duck;
     
 
-    private Animator duckAnim;
+    private AnimationBehaviourController anim;
 
     public static UIManager instance;
 
@@ -27,7 +28,9 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+
         //duckAnim = duck.GetComponent<Animator>();
+        anim = duck.GetComponent<AnimationBehaviourController>();
     }
 
     
@@ -37,6 +40,7 @@ public class UIManager : MonoBehaviour
 
         menuButtons.alpha = 0;
         timerSettings.alpha = 0;
+        welcomeMessage.alpha = 0;
     } 
 
 
@@ -48,7 +52,12 @@ public class UIManager : MonoBehaviour
             yield return null;
         }
 
-        duckAnim.SetTrigger("Resting");
+        LeanTween.alphaCanvas(welcomeMessage.GetComponent<CanvasGroup>(),
+        false ? 0f : 1f, 
+        0.3f).setIgnoreTimeScale(true);
+        yield return new WaitForSecondsRealtime(0.3f);
+
+        anim.SetIdle();
         State = "idle";
     }
 
