@@ -122,7 +122,6 @@ public class CountDown : MonoBehaviour
             if (timeRemaining > 0)
             {
                 timeRemaining -= Time.deltaTime;
-                DisplayTime(timeRemaining);
             }
             else
             {
@@ -132,8 +131,10 @@ public class CountDown : MonoBehaviour
                 // if a 25 min timer ran out
                 if(!breakTime)
                 {
+                    breakTime = true;
                     timeRemaining = BreakTime * 60-1;                    
                     StartCoroutine("delay5min"); //delayed start 5 min timer
+                    
                 }
                 //if 5 min timer ran out
                 else
@@ -143,16 +144,14 @@ public class CountDown : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            DisplayTime(timeRemaining);
-        }
+        
+        DisplayTime(timeRemaining);
+        
     }
 
     //delayed start 25 min timer (so the animation has time to switch & message play)
         IEnumerator delay25min()
     {
-        DisplayTime(timeRemaining);
         // display message
         StartCoroutine(SetMessage("Time to focus!"));
         yield return new WaitForSecondsRealtime(3.5f);
@@ -173,7 +172,7 @@ public class CountDown : MonoBehaviour
         yield return new WaitForSecondsRealtime(3.5f);
 
         timerIsRunning = true;
-        breakTime = true;
+        
     }
 
     IEnumerator SetMessage(string messagetext){
@@ -190,5 +189,34 @@ public class CountDown : MonoBehaviour
         0f, 0.5f);
         yield return new WaitForSecondsRealtime(0.5f);
         message.transform.parent.gameObject.SetActive(false);
+    }
+
+
+    public void ChangeFocusTime(int i){
+        FocusTime = i;
+
+        if (!timerIsRunning && !breakTime){
+            timeRemaining = FocusTime * 60 -1;
+        }
+        if (!breakTime){
+            timeRemaining = Mathf.Min(timeRemaining,FocusTime) * 60 -1;
+        }
+    }
+
+    public void ChangeBreakTime(int i){
+        BreakTime = i;
+
+        if (!timerIsRunning && breakTime){
+            timeRemaining = BreakTime * 60 - 1;
+        }
+
+        else if (breakTime){
+            timeRemaining = Mathf.Min(timeRemaining,BreakTime) * 60 -1;
+
+        } 
+    }
+
+    public void Stats(){
+        Debug.Log($"FOCUS TIME: {FocusTime} BREAK TIME: {BreakTime}");
     }
 }

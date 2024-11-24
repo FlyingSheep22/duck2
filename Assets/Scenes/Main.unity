@@ -1244,6 +1244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5078782421a61444a885bd1ef5dbecac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  input: {fileID: 0}
 --- !u!114 &498729042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1608,7 +1609,19 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2065287121}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -2547,6 +2560,8 @@ MonoBehaviour:
   focusInput: {fileID: 563698819}
   breakInput: {fileID: 444853601}
   reminderInput: {fileID: 2031526684}
+  tasksSave: []
+  breakSave: []
   focusTime: 25
   breakTime: 5
   endReminder: 5
@@ -5535,6 +5550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5078782421a61444a885bd1ef5dbecac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  input: {fileID: 0}
 --- !u!222 &7181618005313734581
 CanvasRenderer:
   m_ObjectHideFlags: 0

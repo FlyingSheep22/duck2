@@ -350,6 +350,7 @@ GameObject:
   - component: {fileID: 30269810}
   - component: {fileID: 30269812}
   - component: {fileID: 30269811}
+  - component: {fileID: 30269813}
   m_Layer: 5
   m_Name: TimerSettings
   m_TagString: Untagged
@@ -407,6 +408,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 30269809}
   m_CullTransparentMesh: 1
+--- !u!114 &30269813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30269809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbecb250a569eb54e9eeca5b35fbb853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cd: {fileID: 434602814}
+  focusInput: {fileID: 935700212}
+  breakInput: {fileID: 2129111744}
+  reminderInput: {fileID: 1006525174}
 --- !u!1 &39401734
 GameObject:
   m_ObjectHideFlags: 0
@@ -2644,6 +2661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5078782421a61444a885bd1ef5dbecac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  input: {fileID: 0}
 --- !u!114 &775855139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2914,7 +2932,19 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 30269813}
+        m_TargetAssemblyTypeName: PomoTimerSettings, Assembly-CSharp
+        m_MethodName: UpdateFocus
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -5580,6 +5610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5078782421a61444a885bd1ef5dbecac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  input: {fileID: 0}
 --- !u!114 &1677201165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6830,7 +6861,19 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 30269813}
+        m_TargetAssemblyTypeName: PomoTimerSettings, Assembly-CSharp
+        m_MethodName: UpdateBreak
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
