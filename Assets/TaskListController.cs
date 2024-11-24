@@ -29,7 +29,7 @@ public class TaskListController : MonoBehaviour
         Transform parent = taskParents[i];
 
         GameObject newTask = Instantiate(taskTemplate,parent);
-        newTask.GetComponent<Task>().Initialize("new task");
+        newTask.GetComponent<Task>().Initialize("New task");
     }
 
     public void AddNewTask(int i, string task){
