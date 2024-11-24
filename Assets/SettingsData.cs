@@ -49,6 +49,7 @@ public class SettingsData : MonoBehaviour
         endReminder = string.IsNullOrWhiteSpace(reminderInput.text) ? 5 : int.Parse(reminderInput.text);
 
         Debug.Log("timer settings have been saved");
+        Debug.Log(focusInput.text);
     }
 
 

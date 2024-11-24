@@ -34,10 +34,22 @@ public class CountDown : MonoBehaviour
     private int BreakTime;
     private int ReminderTime;
 
+    public static CountDown instance;
+
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
+        FocusTime = SettingsData.instance != null ? SettingsData.instance.focusTime : 25;
+        BreakTime = SettingsData.instance != null ? SettingsData.instance.breakTime : 5;
+        ReminderTime = SettingsData.instance != null ? SettingsData.instance.endReminder : 5;
 
+        timeRemaining = FocusTime * 60 - 1;
+        message.transform.parent.gameObject.SetActive(false);
+    }
+
+    public void setNewSettings(){
+        Debug.Log(SettingsData.instance.focusTime.ToString());
         FocusTime = SettingsData.instance != null ? SettingsData.instance.focusTime : 25;
         BreakTime = SettingsData.instance != null ? SettingsData.instance.breakTime : 5;
         ReminderTime = SettingsData.instance != null ? SettingsData.instance.endReminder : 5;

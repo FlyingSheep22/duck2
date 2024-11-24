@@ -9,6 +9,7 @@ public class UIPomoManager : MonoBehaviour
     [SerializeField] TMP_InputField focusInput;
     [SerializeField] TMP_InputField breakInput;
     [SerializeField] TMP_InputField reminderInput;
+    [SerializeField] PomoSettingsButton settingsButton;
 
     public static SettingsData instance;
 
@@ -25,5 +26,13 @@ public class UIPomoManager : MonoBehaviour
             reminderInput.text = instance.endReminder.ToString();
         }
 
+    }
+    void Update(){
+        if (Input.GetKeyDown(KeyCode.Escape)){
+            EscapeFunction();
+        }
+    }
+    private void EscapeFunction(){
+        settingsButton.TimerSettings();
     }
 }
