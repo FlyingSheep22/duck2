@@ -8,7 +8,8 @@ using Unity.VisualScripting;
 
 public class CountDown : MonoBehaviour
 {
-
+    public ConfettiAnimationScript ConfettiAnimationScript;
+    
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] Animator anim;
 
@@ -156,6 +157,8 @@ public class CountDown : MonoBehaviour
     // delayed start 5 min timer
     IEnumerator delay5min()
     {
+        ConfettiAnimationScript.callConfetti();
+
         breakTime = true;
 
         DisplayTime(timeRemaining);
