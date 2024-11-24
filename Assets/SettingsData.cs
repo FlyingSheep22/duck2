@@ -22,10 +22,10 @@ public class SettingsData : MonoBehaviour
     public bool first {get;set;} = true;
 
     // DATA
-    public int FocusTime {get;set;} = 25;
-    public int BreakTime {get;set;} = 5;
+    public int focusTime = 25;
+    public int breakTime = 5;
 
-    public int endReminder {get;set;} = 5;
+    public int endReminder = 5;
 
     public bool autoStartPomo = true;
     public bool autoStartBreak = true;
@@ -42,8 +42,9 @@ public class SettingsData : MonoBehaviour
 
 
     public void SaveSettings(){
-        FocusTime = string.IsNullOrWhiteSpace(focusInput.text) ? 25 : int.Parse(focusInput.text);
-        BreakTime = string.IsNullOrWhiteSpace(breakInput.text) ? 5 : int.Parse(breakInput.text);
+        Debug.Log("here 2");
+        focusTime = string.IsNullOrWhiteSpace(focusInput.text) ? 25 : int.Parse(focusInput.text);
+        breakTime = string.IsNullOrWhiteSpace(breakInput.text) ? 5 : int.Parse(breakInput.text);
         
         autoStartPomo = autoPomoToggle.isOn;
         autoStartBreak = autoBreakToggle.isOn;

@@ -8,6 +8,7 @@ public class PomoDuckControls : MonoBehaviour
 {
     [SerializeField] GameObject buttons;
 
+
     private bool buttonsOpen = false;
 
     void Start(){
@@ -16,6 +17,8 @@ public class PomoDuckControls : MonoBehaviour
         LeanTween.alphaCanvas(buttons.GetComponent<CanvasGroup>(),1f,1f);
     }
 
+    [SerializeField] MenuButtons menu;
+ 
     public void toggleButtons(){
         
         LeanTween.alphaCanvas(buttons.GetComponent<CanvasGroup>(),
@@ -24,10 +27,6 @@ public class PomoDuckControls : MonoBehaviour
         );
 
         buttonsOpen = !buttonsOpen;
-    }
-
-    public void CloseButtons(){
-        if (buttonsOpen) toggleButtons();
     }
 }
 
