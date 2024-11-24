@@ -1216,7 +1216,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &477990698
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3123,8 +3123,8 @@ MonoBehaviour:
   autoPomoToggle: {fileID: 1747929090}
   autoBreakToggle: {fileID: 1821692083}
   reminderInput: {fileID: 1251731894}
-  focusTime: 0
-  breakTime: 0
+  focusTime: 25
+  breakTime: 5
   endReminder: 0
   autoStartPomo: 0
   autoStartBreak: 0
@@ -5183,7 +5183,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttons: {fileID: 431798966}
-  outline: {fileID: 0}
   menu: {fileID: 431798969}
   welcomeMessage: {fileID: 477990699}
 --- !u!95 &1792158107

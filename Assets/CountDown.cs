@@ -115,8 +115,6 @@ public class CountDown : MonoBehaviour
                 //if 5 min timer ran out
                 else
                 {
-                    anim.SetBool("bop",false);
-                    timeRemaining = FocusTime * 60-1;
                     StartCoroutine("delay25min");
                 }
             }
@@ -130,7 +128,11 @@ public class CountDown : MonoBehaviour
     //delayed start 25 min timer (so the animation has time to switch & message play)
         IEnumerator delay25min()
     {
+        anim.SetBool("bop",false);
+        yield return new WaitForSecondsRealtime(0.3f);
+        timeRemaining = FocusTime * 60-1;
         DisplayTime(timeRemaining);
+
         // display message
         StartCoroutine(SetMessage("Time to focus!"));
         yield return new WaitForSecondsRealtime(3.5f);
