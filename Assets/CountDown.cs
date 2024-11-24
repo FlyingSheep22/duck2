@@ -81,7 +81,7 @@ public class CountDown : MonoBehaviour
         Debug.Log("2");
 
         breakTime = false;
-
+        anim.SetBool("PomoStarted",true);
         //change into pause button
         button.image.sprite = pauseImage;
 
