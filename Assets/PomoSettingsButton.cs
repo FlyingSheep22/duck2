@@ -8,7 +8,7 @@ public class PomoSettingsButton : MonoBehaviour
     [SerializeField] PomoDuckControls duck;
     [SerializeField] CountDown countDown;
 
-    private bool timerSettingsOpen = false;   
+    public bool timerSettingsOpen = false;   
 
     public void TimerSettings(){
         StartCoroutine("timerToggleIENUM");

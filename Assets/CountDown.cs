@@ -154,6 +154,7 @@ public class CountDown : MonoBehaviour
     {
         // display message
         StartCoroutine(SetMessage("Time to focus!"));
+        anim.SetBool("Break",false);
         yield return new WaitForSecondsRealtime(3.5f);
 
         timerIsRunning = true;
@@ -168,6 +169,7 @@ public class CountDown : MonoBehaviour
         
         // display message
         StartCoroutine(SetMessage("Time for a break!"));
+        anim.SetBool("Break",true);
 
         yield return new WaitForSecondsRealtime(3.5f);
 

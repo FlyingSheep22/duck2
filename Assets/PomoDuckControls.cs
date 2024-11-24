@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class PomoDuckControls : MonoBehaviour
 {
     [SerializeField] GameObject buttons;
+    [SerializeField] PomoSettingsButton settings;
     private bool buttonsOpen = false;
 
     void Start(){
@@ -22,6 +23,11 @@ public class PomoDuckControls : MonoBehaviour
             buttonsOpen ? 0 : 1,
             0.3f
         );
+
+        if (settings.timerSettingsOpen){
+            settings.TimerSettings();
+        }
+
 
         buttonsOpen = !buttonsOpen;
     }
