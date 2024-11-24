@@ -65,8 +65,8 @@ public class TransparentWindow : MonoBehaviour
         MARGINS margins = new MARGINS { cxLeftWidth = -1 };
         DwmExtendFrameIntoClientArea(ptr, ref margins);
 
-        SetWindowLong(ptr, GWL_EXSTYLE, WS_EX_LAYERED);
-        SetLayeredWindowAttributes(ptr,0,0,LWA_COLORKEY);
+        SetWindowLong(ptr, GWL_EXSTYLE, WS_EX_LAYERED | WS_EX_TRANSPARENT);
+        // SetLayeredWindowAttributes(ptr,0,0,LWA_COLORKEY);
 
         SetWindowPos(ptr,PTR_TOP,0,0,0,0,0);
 

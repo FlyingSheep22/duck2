@@ -19,13 +19,13 @@ public class SettingsData : MonoBehaviour
 
 
     // DATA
-    public int focusTime;
-    public int breakTime;
+    public int focusTime = 25;
+    public int breakTime = 5;
 
-    public int endReminder;
+    public int endReminder = 5;
 
-    public bool autoStartPomo;
-    public bool autoStartBreak;
+    public bool autoStartPomo = true;
+    public bool autoStartBreak = true;
 
     void Awake(){
         if (instance == null){
@@ -38,13 +38,13 @@ public class SettingsData : MonoBehaviour
 
 
     public void SaveSettings(){
-        focusTime = int.Parse(focusInput.text);
-        breakTime = int.Parse(breakInput.text);
-
+        focusTime = string.IsNullOrWhiteSpace(focusInput.text) ? 25 : int.Parse(focusInput.text);
+        breakTime = string.IsNullOrWhiteSpace(breakInput.text) ? 5 : int.Parse(breakInput.text);
+        
         autoStartPomo = autoPomoToggle.isOn;
         autoStartBreak = autoBreakToggle.isOn;
 
-        endReminder = int.Parse(reminderInput.text);
+        endReminder = string.IsNullOrWhiteSpace(reminderInput.text) ? 5 : int.Parse(reminderInput.text);
 
         Debug.Log("timer settings have been saved");
     }
