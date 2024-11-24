@@ -5,13 +5,19 @@ using UnityEngine;
 public class PomoSettingsButton : MonoBehaviour
 {
     [SerializeField] GameObject timerSettings;
-    private bool timerSettingsOpen = false;    
+    [SerializeField] PomoDuckControls duck;
+    private bool timerSettingsOpen = false;   
+    
+    public static SettingsData instance;
+
 
     public void TimerSettings(){
         StartCoroutine("timerToggleIENUM");
     }
 
-    IEnumerator timerToggleIENUM(){        
+    IEnumerator timerToggleIENUM(){  
+        Debug.Log("open pomo settings");
+        duck.toggleButtons();
         if (!timerSettingsOpen) timerSettings.SetActive(true);
 
         LeanTween.alphaCanvas(timerSettings.GetComponent<CanvasGroup>(),
