@@ -7,8 +7,6 @@ using UnityEngine.UI;
 public class PomoDuckControls : MonoBehaviour
 {
     [SerializeField] GameObject buttons;
-
-
     private bool buttonsOpen = false;
 
     void Start(){

@@ -23,13 +23,13 @@ public class UIPomoManager : MonoBehaviour
         if (instance == null){
             Debug.Log("settings data object not found!");
         } else {
-            focusInput.text = string.IsNullOrWhiteSpace(instance.focusTime.ToString()) ? 25.ToString() : instance.focusTime.ToString();
-            breakInput.text = string.IsNullOrWhiteSpace(instance.breakTime.ToString()) ? 5.ToString() : instance.breakTime.ToString();
+            focusInput.text = instance.focusTime.ToString();
+            breakInput.text = instance.breakTime.ToString();
 
             autoPomoToggle.isOn = instance.autoStartPomo;
             autoBreakToggle.isOn = instance.autoStartBreak;
 
-            reminderInput.text = string.IsNullOrWhiteSpace(instance.endReminder.ToString()) ? 5.ToString() : instance.endReminder.ToString();
+            reminderInput.text = instance.endReminder.ToString();
         }
     }
 }

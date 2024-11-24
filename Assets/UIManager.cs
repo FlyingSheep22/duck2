@@ -49,8 +49,6 @@ public class UIManager : MonoBehaviour
 
         }
 
-        
-
         menuButtons.alpha = 0;
         timerSettings.alpha = 0;
         welcomeMessage.alpha = 0;
