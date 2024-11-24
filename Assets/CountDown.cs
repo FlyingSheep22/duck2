@@ -14,6 +14,8 @@ public class CountDown : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI message;
 
+    private PomoDuckControls duck;
+
     public float timeRemaining = 25*60;
     public bool timerIsRunning = false;
     public bool breakTime = false;
@@ -30,13 +32,16 @@ public class CountDown : MonoBehaviour
 
     private int FocusTime;
     private int BreakTime;
+    private int ReminderTime;
 
     // Start is called before the first frame update
     void Start()
     {
+        duck = transform.parent.GetComponent<PomoDuckControls>();
 
-        FocusTime = SettingsData.instance != null ? SettingsData.instance.focusTime : 25;
-        BreakTime = SettingsData.instance != null ? SettingsData.instance.breakTime : 5;
+        FocusTime = SettingsData.instance != null ? SettingsData.instance.FocusTime : 25;
+        BreakTime = SettingsData.instance != null ? SettingsData.instance.BreakTime : 5;
+        ReminderTime = SettingsData.instance != null ? SettingsData.instance.endReminder : 5;
 
         timeRemaining = FocusTime * 60 - 1;
 
@@ -84,6 +89,12 @@ public class CountDown : MonoBehaviour
     {
         timeToDisplay += 1;
 
+
+        if (Mathf.FloorToInt(timeToDisplay) == ReminderTime * 60 && !breakTime){
+            StartCoroutine(SetMessage($"{ReminderTime} minutes remaining!"));
+        }
+
+
         float minutes = Mathf.FloorToInt(timeToDisplay / 60); 
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
@@ -100,6 +111,7 @@ public class CountDown : MonoBehaviour
             {
                 timeRemaining -= Time.deltaTime;
                 DisplayTime(timeRemaining);
+
             }
             else
             {
@@ -115,8 +127,6 @@ public class CountDown : MonoBehaviour
                 //if 5 min timer ran out
                 else
                 {
-                    anim.SetBool("bop",false);
-                    timeRemaining = FocusTime * 60-1;
                     StartCoroutine("delay25min");
                 }
             }
@@ -130,7 +140,11 @@ public class CountDown : MonoBehaviour
     //delayed start 25 min timer (so the animation has time to switch & message play)
         IEnumerator delay25min()
     {
+        anim.SetBool("bop",false);
+        yield return new WaitForSecondsRealtime(0.3f);
+        timeRemaining = FocusTime * 60-1;
         DisplayTime(timeRemaining);
+
         // display message
         StartCoroutine(SetMessage("Time to focus!"));
         yield return new WaitForSecondsRealtime(3.5f);
@@ -142,21 +156,24 @@ public class CountDown : MonoBehaviour
     // delayed start 5 min timer
     IEnumerator delay5min()
     {
+        breakTime = true;
+
         DisplayTime(timeRemaining);
         
         // display message
         StartCoroutine(SetMessage("Time for a break!"));
-
-        yield return new WaitForSecondsRealtime(3.5f);
         anim.SetBool("bop",true);
-        Debug.Log("4");
-
+        
+        yield return new WaitForSecondsRealtime(3.5f);
+        
         //add message to tell user break start here later
         timerIsRunning = true;
-        breakTime = true;
     }
 
     IEnumerator SetMessage(string messagetext){
+        
+        duck.CloseButtons();
+
         message.transform.parent.gameObject.SetActive(true);
         message.text = messagetext;
 

@@ -9,7 +9,7 @@ public class PomoDuckControls : MonoBehaviour
     [SerializeField] GameObject buttons;
     [SerializeField] MenuButtons menu;
  
-    private bool buttonsOpen = false;
+    private bool buttonsOpen = true;
 
     public void toggleButtons(){
         
@@ -19,6 +19,10 @@ public class PomoDuckControls : MonoBehaviour
         );
 
         buttonsOpen = !buttonsOpen;
+    }
+
+    public void CloseButtons(){
+        if (buttonsOpen) toggleButtons();
     }
 }
 
