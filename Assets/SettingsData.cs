@@ -28,6 +28,7 @@ public class SettingsData : MonoBehaviour
     public bool autoStartBreak = true;
 
     void Awake(){
+        Debug.Log("here");
         if (instance == null){
             instance = this;
             DontDestroyOnLoad(gameObject);

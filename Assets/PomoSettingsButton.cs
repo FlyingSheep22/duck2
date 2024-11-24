@@ -1,34 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Timers;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class MenuButtons : MonoBehaviour
+public class PomoSettingsButton : MonoBehaviour
 {
     [SerializeField] GameObject timerSettings;
-    [SerializeField] DuckControls duck;
-
-    private bool timerSettingsOpen = false;
-
-    public void StartPomo(){
-        Debug.Log("Start pomo clicked");
-        SceneManager.LoadScene(1);
-    }
-
-
-    public void StartIdle(){
-
-    }
-
+    private bool timerSettingsOpen = false;    
 
     public void TimerSettings(){
         StartCoroutine("timerToggleIENUM");
     }
 
-    IEnumerator timerToggleIENUM(){
-        duck.toggleButtons();
-        
+    IEnumerator timerToggleIENUM(){        
         if (!timerSettingsOpen) timerSettings.SetActive(true);
 
         LeanTween.alphaCanvas(timerSettings.GetComponent<CanvasGroup>(),
@@ -44,14 +27,6 @@ public class MenuButtons : MonoBehaviour
         timerSettings.SetActive(!timerSettingsOpen);
         timerSettings.GetComponent<CanvasGroup>().interactable = true;
 
-        UIManager.instance.State = timerSettingsOpen ? "menuButtons" : "timerSettings";
         timerSettingsOpen = !timerSettingsOpen;
-    }
-
-
-    public void Close()
-    {
-        
-        Application.Quit();
     }
 }
