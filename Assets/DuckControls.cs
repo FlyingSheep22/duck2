@@ -13,6 +13,7 @@ public class DuckControls : MonoBehaviour
     private bool buttonsOpen = false;
 
     public void ButtonClick(){
+        Debug.Log("button clicked");
         if (UIManager.instance.State == "timerSettings"){
             menu.TimerSettings();
             return;

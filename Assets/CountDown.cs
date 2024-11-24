@@ -11,6 +11,9 @@ public class CountDown : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] Animator anim;
+
+    [SerializeField] TextMeshProUGUI message;
+
     public float timeRemaining = 25*60;
     public bool timerIsRunning = false;
     public bool breakTime = false;
@@ -39,6 +42,7 @@ public class CountDown : MonoBehaviour
 
         anim.SetBool("bop",false);
 
+        message.transform.parent.gameObject.SetActive(false);
     }
 
 
@@ -72,6 +76,8 @@ public class CountDown : MonoBehaviour
         //change into pause button
         button.image.sprite = pauseImage;
         Debug.Log("restarted timer");
+
+        StartCoroutine(SetMessage("Session restarted!"));
     }
 
     void DisplayTime(float timeToDisplay)
@@ -103,20 +109,15 @@ public class CountDown : MonoBehaviour
                 // if a 25 min timer ran out
                 if(!breakTime)
                 {
-                    timeRemaining = BreakTime * 60;
-                    //add message to tell user break start here later
-                    
-                    StartCoroutine("delay"); //delayed start 5 min timer
+                    timeRemaining = BreakTime * 60-1;                    
+                    StartCoroutine("delay5min"); //delayed start 5 min timer
                 }
                 //if 5 min timer ran out
                 else
                 {
                     anim.SetBool("bop",false);
-                    Debug.Log("3");
-                    breakTime = false;
-                    timeRemaining = FocusTime * 60;
-                    //add message to tell user work start here later
-                    timerIsRunning = true;
+                    timeRemaining = FocusTime * 60-1;
+                    StartCoroutine("delay25min");
                 }
             }
         }
@@ -126,17 +127,48 @@ public class CountDown : MonoBehaviour
         }
     }
 
+    //delayed start 25 min timer (so the animation has time to switch & message play)
+        IEnumerator delay25min()
+    {
+        DisplayTime(timeRemaining);
+        // display message
+        StartCoroutine(SetMessage("Time to focus!"));
+        yield return new WaitForSecondsRealtime(3.5f);
+
+        timerIsRunning = true;
+        breakTime = false;
+    }
+
     // delayed start 5 min timer
-    IEnumerator delay()
+    IEnumerator delay5min()
     {
         DisplayTime(timeRemaining);
         
-        yield return new WaitForSecondsRealtime(3f);
+        // display message
+        StartCoroutine(SetMessage("Time for a break!"));
+
+        yield return new WaitForSecondsRealtime(3.5f);
         anim.SetBool("bop",true);
         Debug.Log("4");
 
         //add message to tell user break start here later
         timerIsRunning = true;
         breakTime = true;
+    }
+
+    IEnumerator SetMessage(string messagetext){
+        message.transform.parent.gameObject.SetActive(true);
+        message.text = messagetext;
+
+        LeanTween.alphaCanvas(message.transform.parent.GetComponent<CanvasGroup>(),
+        1f, 0.5f);
+        yield return new WaitForSecondsRealtime(0.5f);
+
+        yield return new WaitForSecondsRealtime(3f);
+
+        LeanTween.alphaCanvas(message.transform.parent.GetComponent<CanvasGroup>(),
+        0f, 0.5f);
+        yield return new WaitForSecondsRealtime(0.5f);
+        message.transform.parent.gameObject.SetActive(false);
     }
 }
