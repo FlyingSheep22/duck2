@@ -14,6 +14,8 @@ public class CountDown : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI message;
 
+    private PomoDuckControls duck;
+
     public float timeRemaining = 25*60;
     public bool timerIsRunning = false;
     public bool breakTime = false;
@@ -35,6 +37,7 @@ public class CountDown : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        duck = transform.parent.GetComponent<PomoDuckControls>();
 
         FocusTime = SettingsData.instance != null ? SettingsData.instance.FocusTime : 25;
         BreakTime = SettingsData.instance != null ? SettingsData.instance.BreakTime : 5;
@@ -166,6 +169,9 @@ public class CountDown : MonoBehaviour
     }
 
     IEnumerator SetMessage(string messagetext){
+        
+        duck.CloseButtons();
+
         message.transform.parent.gameObject.SetActive(true);
         message.text = messagetext;
 
