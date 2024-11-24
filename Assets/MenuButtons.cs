@@ -49,9 +49,7 @@ public class MenuButtons : MonoBehaviour
     }
 
 
-    public void Close()
-    {
-        
+    public void Close(){
         Application.Quit();
     }
 }

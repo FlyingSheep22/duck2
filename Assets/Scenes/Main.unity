@@ -1431,7 +1431,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.28930807, g: 0.28930807, b: 0.28930807, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2948,8 +2948,8 @@ MonoBehaviour:
   autoPomoToggle: {fileID: 1747929090}
   autoBreakToggle: {fileID: 1821692083}
   reminderInput: {fileID: 1251731894}
-  focusTime: 25
-  breakTime: 5
+  focusTime: 0
+  breakTime: 0
   endReminder: 0
   autoStartPomo: 0
   autoStartBreak: 0
