@@ -57,7 +57,8 @@ public class DuckControls : MonoBehaviour
         
         buttons.GetComponent<CanvasGroup>().interactable = true;
         buttonsOpen = !buttonsOpen;
-
+        
+        SettingsData.instance.SaveTasks();
         SceneManager.LoadScene(1);
     }
 }

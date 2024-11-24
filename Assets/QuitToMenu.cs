@@ -16,6 +16,7 @@ public class QuitToMain : MonoBehaviour
     IEnumerator quitToMain(){
         duck.toggleButtonsSlow();
         yield return new WaitForSecondsRealtime(0.3f);
+        SettingsData.instance.SaveTasks();
         SceneManager.LoadScene(0);
     }
 }

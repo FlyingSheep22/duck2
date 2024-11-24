@@ -6,17 +6,15 @@ public class PomoSettingsButton : MonoBehaviour
 {
     [SerializeField] GameObject timerSettings;
     [SerializeField] PomoDuckControls duck;
-    private bool timerSettingsOpen = false;   
-    
-    public static SettingsData instance;
+    [SerializeField] CountDown countDown;
 
+    private bool timerSettingsOpen = false;   
 
     public void TimerSettings(){
         StartCoroutine("timerToggleIENUM");
     }
 
     IEnumerator timerToggleIENUM(){  
-        Debug.Log("open pomo settings");
         duck.toggleButtons();
         if (!timerSettingsOpen) timerSettings.SetActive(true);
 
@@ -26,9 +24,8 @@ public class PomoSettingsButton : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.3f);
 
         // Save data inputted to Dont Destroy On Load
-        if (timerSettingsOpen){
-            SettingsData.instance.SaveSettings();
-        }
+        SettingsData.instance.SaveSettings();
+        CountDown.instance.setNewSettings();
 
         timerSettings.SetActive(!timerSettingsOpen);
         timerSettings.GetComponent<CanvasGroup>().interactable = true;
