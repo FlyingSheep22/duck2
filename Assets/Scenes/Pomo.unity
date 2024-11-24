@@ -5451,7 +5451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9140474200695005659, guid: 8763ea77fc25a4948863f82e9cd88cc7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ButtonClick
+      value: toggleButtons
       objectReference: {fileID: 0}
     - target: {fileID: 9140474200695005659, guid: 8763ea77fc25a4948863f82e9cd88cc7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
