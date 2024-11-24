@@ -18,6 +18,9 @@ public class SettingsData : MonoBehaviour
     [SerializeField] TMP_InputField reminderInput;
 
 
+    // First time run
+    public bool first {get;set;} = true;
+
     // DATA
     public int FocusTime {get;set;} = 25;
     public int BreakTime {get;set;} = 5;

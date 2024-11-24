@@ -36,7 +36,20 @@ public class UIManager : MonoBehaviour
     
 
     void Start(){
-        StartCoroutine("enterSequence");
+        if (SettingsData.instance.first){
+            StartCoroutine("enterSequence");
+            SettingsData.instance.first = false;
+
+        } else {
+            RectTransform duckTr = duck.GetComponent<RectTransform>();
+            duckTr.anchoredPosition = new Vector2(125,duckTr.anchoredPosition.y);
+            anim.SetIdle();
+            State = "idle";
+
+
+        }
+
+        
 
         menuButtons.alpha = 0;
         timerSettings.alpha = 0;
