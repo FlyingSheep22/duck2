@@ -9,6 +9,7 @@ public class ConfettiAnimationScript : MonoBehaviour
 {
     public Animator anim;
     private RectTransform rt; 
+    public int direction = 1; // 1 for right-to-left, -1 for left-to-right
     
     void Awake()
     {
@@ -30,35 +31,34 @@ public class ConfettiAnimationScript : MonoBehaviour
         //scale.x *= -1; // Invert the X scale
         rt.localScale = scale;
 
-        Debug.Log(rt.position.x);
-        while(rt.position.x >= 700)
+        while(seconds <= 2.4f)
         {
-            Debug.Log(rt.position.x);
             seconds += Time.deltaTime;
-            rt.anchoredPosition += new Vector2(-90 * Time.deltaTime, 0);
+            rt.anchoredPosition += new Vector2(-40 * direction * Time.deltaTime, 0);
             yield return null;
         }
 
         anim.SetTrigger("Confetti");
-        yield return new WaitForSecondsRealtime(1.25f);
+        yield return new WaitForSeconds(1.25f);
 
         anim.SetTrigger("WalkingConfetti");
-        yield return new WaitForSecondsRealtime(0.2f);
+        yield return new WaitForSeconds(0.2f);
         scale = rt.localScale;
         scale.x *= -1; // Invert the X scale
         rt.localScale = scale;
-        rt.anchoredPosition = new Vector2(rt.anchoredPosition.x+150, rt.anchoredPosition.y);
+        rt.anchoredPosition = new Vector2(rt.anchoredPosition.x+(50*direction), rt.anchoredPosition.y);
         
-        while (rt.anchoredPosition.x <= 1200){
+        while (seconds <= (2.4f*2))
+        {
             seconds += Time.deltaTime;
-            rt.anchoredPosition += new Vector2(90 * Time.deltaTime, 0);
+            rt.anchoredPosition += new Vector2(40 * direction * Time.deltaTime, 0);
             yield return null;
         }
         
         scale = rt.localScale;
         scale.x *= -1; // Invert the X 
         rt.localScale = scale;
-        rt.anchoredPosition = new Vector2(rt.anchoredPosition.x-150, rt.anchoredPosition.y);
+        rt.anchoredPosition = new Vector2(rt.anchoredPosition.x-(50*direction), rt.anchoredPosition.y);
     }
     
     // Start is called before the first frame update
