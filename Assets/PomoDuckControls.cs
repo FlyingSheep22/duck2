@@ -15,7 +15,6 @@ public class PomoDuckControls : MonoBehaviour
         LeanTween.alphaCanvas(buttons.GetComponent<CanvasGroup>(),1f,1f);
     }
 
-    [SerializeField] MenuButtons menu;
  
     public void toggleButtons(){
         
