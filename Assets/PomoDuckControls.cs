@@ -25,7 +25,7 @@ public class PomoDuckControls : MonoBehaviour
         );
 
         if (settings.timerSettingsOpen){
-            settings.TimerSettings();
+            // settings.TimerSettings();
         }
 
 
