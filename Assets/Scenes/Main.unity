@@ -1445,7 +1445,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.28930807, g: 0.28930807, b: 0.28930807, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -5183,7 +5183,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttons: {fileID: 431798966}
-  outline: {fileID: 0}
   menu: {fileID: 431798969}
   welcomeMessage: {fileID: 477990699}
 --- !u!95 &1792158107

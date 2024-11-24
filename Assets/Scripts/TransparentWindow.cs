@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Unity.VisualScripting;
 
 public class TransparentWindow : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class TransparentWindow : MonoBehaviour
     const uint WS_EX_LAYERED = 0x00080000;
     const uint WS_EX_TRANSPARENT = 0x00000020;
     const uint LWA_COLORKEY = 0X00000001;
+
+    private IntPtr ptr;
 
     static readonly IntPtr PTR_TOP = new IntPtr(-1);
 
@@ -60,13 +63,13 @@ public class TransparentWindow : MonoBehaviour
     void Start(){
 
 #if !UNITY_EDITOR
-        IntPtr ptr = GetActiveWindow();
+        ptr = GetActiveWindow();
 
         MARGINS margins = new MARGINS { cxLeftWidth = -1 };
         DwmExtendFrameIntoClientArea(ptr, ref margins);
 
-        SetWindowLong(ptr, GWL_EXSTYLE, WS_EX_LAYERED | WS_EX_TRANSPARENT);
-        // SetLayeredWindowAttributes(ptr,0,0,LWA_COLORKEY);
+        SetWindowLong(ptr, GWL_EXSTYLE, WS_EX_LAYERED);
+        SetLayeredWindowAttributes(ptr,0x4A4A4A,0,LWA_COLORKEY);
 
         SetWindowPos(ptr,PTR_TOP,0,0,0,0,0);
 

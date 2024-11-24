@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class DuckControls : MonoBehaviour
 {
     [SerializeField] GameObject buttons;
-    [SerializeField] Outline outline;
     [SerializeField] MenuButtons menu;
     [SerializeField] CanvasGroup welcomeMessage;
  
