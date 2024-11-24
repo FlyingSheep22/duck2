@@ -28,6 +28,7 @@ public class SettingsData : MonoBehaviour
     public bool autoStartBreak = true;
 
     void Awake(){
+        Debug.Log("here");
         if (instance == null){
             instance = this;
             DontDestroyOnLoad(gameObject);
@@ -38,6 +39,7 @@ public class SettingsData : MonoBehaviour
 
 
     public void SaveSettings(){
+        Debug.Log("here 2");
         focusTime = string.IsNullOrWhiteSpace(focusInput.text) ? 25 : int.Parse(focusInput.text);
         breakTime = string.IsNullOrWhiteSpace(breakInput.text) ? 5 : int.Parse(breakInput.text);
         
