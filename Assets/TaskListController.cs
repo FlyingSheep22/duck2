@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class TaskListController : MonoBehaviour
@@ -7,9 +8,20 @@ public class TaskListController : MonoBehaviour
     [SerializeField] GameObject taskTemplate;
     [SerializeField] GameObject button;
 
-    [SerializeField] Transform[] taskParents;
+    public Transform[] taskParents;
+
+
+    public static TaskListController instance;
 
     private bool tasksOpen = false;
+
+
+    void Start(){
+        instance = this;
+
+        LoadTasks();
+    }
+
 
     // if i is 0 then add to the tasks list
     // if i is 1 then add to the break tasks list
@@ -18,6 +30,14 @@ public class TaskListController : MonoBehaviour
 
         GameObject newTask = Instantiate(taskTemplate,parent);
         newTask.GetComponent<Task>().Initialize("new task");
+    }
+
+    public void AddNewTask(int i, string task){
+        Transform parent = taskParents[i];
+
+        GameObject newTask = Instantiate(taskTemplate,parent);
+        newTask.GetComponentInChildren<TMP_InputField>().text = task;
+        newTask.GetComponent<Task>().StopTyping();
     }
 
     void Update(){
@@ -48,5 +68,18 @@ public class TaskListController : MonoBehaviour
 
         tasksOpen = !tasksOpen;
 
+    }
+
+    private void LoadTasks(){
+        if (SettingsData.instance == null) return;
+
+        foreach (string t in SettingsData.instance.tasksSave){
+            AddNewTask(0, t);
+        }
+
+        foreach (string b in SettingsData.instance.breakSave){
+            AddNewTask(1, b);
+        }
+    
     }
 }

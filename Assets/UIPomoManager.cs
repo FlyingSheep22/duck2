@@ -31,5 +31,6 @@ public class UIPomoManager : MonoBehaviour
 
             reminderInput.text = instance.endReminder.ToString();
         }
+
     }
 }
