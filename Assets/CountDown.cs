@@ -9,7 +9,7 @@ using Unity.VisualScripting;
 public class CountDown : MonoBehaviour
 {
     public ConfettiManager ConfettiManager;
-    
+
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] Animator anim;
 
@@ -43,12 +43,7 @@ public class CountDown : MonoBehaviour
         ReminderTime = SettingsData.instance != null ? SettingsData.instance.endReminder : 5;
 
         timeRemaining = FocusTime * 60 - 1;
-
-        anim.SetBool("bop",false);
-
         message.transform.parent.gameObject.SetActive(false);
-
-        
     }
 
 
@@ -78,15 +73,13 @@ public class CountDown : MonoBehaviour
     {
         timeRemaining = FocusTime*60;
         timerIsRunning = true;
-        anim.SetBool("bop",false);
-        Debug.Log("2");
 
         breakTime = false;
         anim.SetBool("PomoStarted",true);
         //change into pause button
         button.image.sprite = pauseImage;
 
-        // StartCoroutine(SetMessage("Session restarted!"));
+        //StartCoroutine(SetMessage("Session restarted!"));
     }
 
     void DisplayTime(float timeToDisplay)
@@ -133,7 +126,6 @@ public class CountDown : MonoBehaviour
                 //if 5 min timer ran out
                 else
                 {
-                    anim.SetBool("bop",false);
                     timeRemaining = FocusTime * 60-1;
                     StartCoroutine("delay25min");
                 }
@@ -161,17 +153,13 @@ public class CountDown : MonoBehaviour
     IEnumerator delay5min()
     {
         ConfettiManager.TriggerConfetti();
-
         DisplayTime(timeRemaining);
         
         // display message
         StartCoroutine(SetMessage("Time for a break!"));
 
         yield return new WaitForSecondsRealtime(3.5f);
-        anim.SetBool("bop",true);
-        Debug.Log("4");
 
-        //add message to tell user break start here later
         timerIsRunning = true;
         breakTime = true;
     }
