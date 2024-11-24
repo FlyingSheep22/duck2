@@ -28,5 +28,13 @@ public class PomoDuckControls : MonoBehaviour
 
         buttonsOpen = !buttonsOpen;
     }
+
+    public void toggleButtonsSlow(){
+        
+        LeanTween.alphaCanvas(buttons.GetComponent<CanvasGroup>(),
+            0,0.3f);
+
+        buttonsOpen = false;
+    }
 }
 

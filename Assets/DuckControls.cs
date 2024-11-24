@@ -52,8 +52,8 @@ public class DuckControls : MonoBehaviour
 
     public IEnumerator toggleButtonsSlow(){
         
-        LeanTween.alphaCanvas(buttons.GetComponent<CanvasGroup>(), 0, 0.8f);
-        yield return new WaitForSecondsRealtime(0.8f);
+        LeanTween.alphaCanvas(buttons.GetComponent<CanvasGroup>(), 0, 0.3f);
+        yield return new WaitForSecondsRealtime(0.3f);
         
         buttons.GetComponent<CanvasGroup>().interactable = true;
         buttonsOpen = !buttonsOpen;
