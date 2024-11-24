@@ -7,9 +7,14 @@ using UnityEngine.UI;
 public class PomoDuckControls : MonoBehaviour
 {
     [SerializeField] GameObject buttons;
-    [SerializeField] MenuButtons menu;
- 
-    private bool buttonsOpen = true;
+
+    private bool buttonsOpen = false;
+
+    void Start(){
+        buttons.GetComponent<CanvasGroup>().alpha = 0;
+
+        LeanTween.alphaCanvas(buttons.GetComponent<CanvasGroup>(),1f,1f);
+    }
 
     public void toggleButtons(){
         

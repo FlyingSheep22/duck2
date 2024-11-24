@@ -12,9 +12,9 @@ public class MenuButtons : MonoBehaviour
     private bool timerSettingsOpen = false;
 
     public void StartPomo(){
-        SceneManager.LoadScene(1);
+        Debug.Log("start pomo");
+        duck.StartPomo();
     }
-
 
     public void StartIdle(){
 

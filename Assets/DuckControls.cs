@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DuckControls : MonoBehaviour
@@ -44,5 +45,20 @@ public class DuckControls : MonoBehaviour
 
         buttons.GetComponent<CanvasGroup>().interactable = true;
         buttonsOpen = !buttonsOpen;
+    }
+
+    public void StartPomo(){
+        StartCoroutine("toggleButtonsSlow");
+    }
+
+    public IEnumerator toggleButtonsSlow(){
+        
+        LeanTween.alphaCanvas(buttons.GetComponent<CanvasGroup>(), 0, 0.8f);
+        yield return new WaitForSecondsRealtime(0.8f);
+        
+        buttons.GetComponent<CanvasGroup>().interactable = true;
+        buttonsOpen = !buttonsOpen;
+
+        SceneManager.LoadScene(1);
     }
 }

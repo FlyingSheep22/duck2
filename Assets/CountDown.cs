@@ -13,6 +13,7 @@ public class CountDown : MonoBehaviour
     [SerializeField] Animator anim;
 
     [SerializeField] TextMeshProUGUI message;
+    [SerializeField] Slider slider;
 
     private PomoDuckControls duck;
 
@@ -48,6 +49,8 @@ public class CountDown : MonoBehaviour
         anim.SetBool("bop",false);
 
         message.transform.parent.gameObject.SetActive(false);
+
+        
     }
 
 
@@ -60,12 +63,16 @@ public class CountDown : MonoBehaviour
             //change into pause button
             button.image.sprite = pauseImage;
             Debug.Log("start timer");
+
+            anim.SetBool("PomoStarted",true);
         }
         else //user is trying to pause timer
         {
             timerIsRunning = false;
             button.image.sprite = startImage;
+            anim.SetBool("PomoStarted",false);
         }
+
     }
 
     // RESTART
@@ -80,25 +87,27 @@ public class CountDown : MonoBehaviour
 
         //change into pause button
         button.image.sprite = pauseImage;
-        Debug.Log("restarted timer");
 
-        StartCoroutine(SetMessage("Session restarted!"));
+        // StartCoroutine(SetMessage("Session restarted!"));
     }
 
     void DisplayTime(float timeToDisplay)
     {
-        timeToDisplay += 1;
 
+        timeToDisplay += 1;
 
         if (Mathf.FloorToInt(timeToDisplay) == ReminderTime * 60 && !breakTime){
             StartCoroutine(SetMessage($"{ReminderTime} minutes remaining!"));
         }
 
-
         float minutes = Mathf.FloorToInt(timeToDisplay / 60); 
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        
+        
+        float timeRatio = timeToDisplay / ((breakTime ? (float) BreakTime : (float) FocusTime) * 60f);
+        slider.value = timeRatio;
     }
 
     // Update is called once per frame
@@ -163,7 +172,7 @@ public class CountDown : MonoBehaviour
         // display message
         StartCoroutine(SetMessage("Time for a break!"));
         anim.SetBool("bop",true);
-        
+
         yield return new WaitForSecondsRealtime(3.5f);
         
         //add message to tell user break start here later
