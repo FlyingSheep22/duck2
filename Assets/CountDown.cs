@@ -30,13 +30,15 @@ public class CountDown : MonoBehaviour
 
     private int FocusTime;
     private int BreakTime;
+    private int ReminderTime;
 
     // Start is called before the first frame update
     void Start()
     {
 
-        FocusTime = SettingsData.instance != null ? SettingsData.instance.focusTime : 25;
-        BreakTime = SettingsData.instance != null ? SettingsData.instance.breakTime : 5;
+        FocusTime = SettingsData.instance != null ? SettingsData.instance.FocusTime : 25;
+        BreakTime = SettingsData.instance != null ? SettingsData.instance.BreakTime : 5;
+        ReminderTime = SettingsData.instance != null ? SettingsData.instance.endReminder : 5;
 
         timeRemaining = FocusTime * 60 - 1;
 
@@ -84,6 +86,12 @@ public class CountDown : MonoBehaviour
     {
         timeToDisplay += 1;
 
+
+        if (Mathf.FloorToInt(timeToDisplay) == ReminderTime * 60 && !breakTime){
+            StartCoroutine(SetMessage($"{ReminderTime} minutes remaining!"));
+        }
+
+
         float minutes = Mathf.FloorToInt(timeToDisplay / 60); 
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
@@ -100,6 +108,7 @@ public class CountDown : MonoBehaviour
             {
                 timeRemaining -= Time.deltaTime;
                 DisplayTime(timeRemaining);
+
             }
             else
             {
