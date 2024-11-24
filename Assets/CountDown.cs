@@ -156,18 +156,18 @@ public class CountDown : MonoBehaviour
     // delayed start 5 min timer
     IEnumerator delay5min()
     {
+        breakTime = true;
+
         DisplayTime(timeRemaining);
         
         // display message
         StartCoroutine(SetMessage("Time for a break!"));
-
-        yield return new WaitForSecondsRealtime(3.5f);
         anim.SetBool("bop",true);
-        Debug.Log("4");
-
+        
+        yield return new WaitForSecondsRealtime(3.5f);
+        
         //add message to tell user break start here later
         timerIsRunning = true;
-        breakTime = true;
     }
 
     IEnumerator SetMessage(string messagetext){
