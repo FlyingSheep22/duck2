@@ -31,6 +31,7 @@ public class CountDown : MonoBehaviour
 
     private int FocusTime;
     private int BreakTime;
+    private int ReminderTime;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +39,7 @@ public class CountDown : MonoBehaviour
 
         FocusTime = SettingsData.instance != null ? SettingsData.instance.focusTime : 25;
         BreakTime = SettingsData.instance != null ? SettingsData.instance.breakTime : 5;
+        ReminderTime = SettingsData.instance != null ? SettingsData.instance.endReminder : 5;
 
         timeRemaining = FocusTime * 60 - 1;
 
