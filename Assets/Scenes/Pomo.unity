@@ -3825,7 +3825,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1989980407}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: TimerSettings
         m_Mode: 1
@@ -4286,6 +4286,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1770044022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770044013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6596ba9a4db4a994db7ac0d06fd6e47b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons: {fileID: 1989980405}
+  menu: {fileID: 1989980409}
 --- !u!1 &1796818658
 GameObject:
   m_ObjectHideFlags: 0
@@ -4516,7 +4530,6 @@ RectTransform:
   m_Children:
   - {fileID: 2065287122}
   - {fileID: 1770044014}
-  - {fileID: 1989980406}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4914,7 +4927,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1989980406}
   - component: {fileID: 1989980408}
-  - component: {fileID: 1989980407}
+  - component: {fileID: 1989980409}
   m_Layer: 5
   m_Name: MenuButtons
   m_TagString: Untagged
@@ -4940,27 +4953,13 @@ RectTransform:
   - {fileID: 1849623487}
   - {fileID: 1363592117}
   - {fileID: 789604908}
-  m_Father: {fileID: 1816855063}
+  m_Father: {fileID: 1770044014}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 64.00726, y: 128.87177}
+  m_AnchoredPosition: {x: 915.0071, y: 354.87183}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1989980407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1989980405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d7207bcf91880d46b2ad69b93213fce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timerSettings: {fileID: 2065287121}
-  duck: {fileID: 0}
 --- !u!225 &1989980408
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -4973,6 +4972,20 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1989980409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989980405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d7207bcf91880d46b2ad69b93213fce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerSettings: {fileID: 0}
+  duck: {fileID: 0}
 --- !u!1 &1995357482
 GameObject:
   m_ObjectHideFlags: 0
@@ -5324,6 +5337,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1816855063}
     m_Modifications:
+    - target: {fileID: 496484641159114272, guid: 8763ea77fc25a4948863f82e9cd88cc7, type: 3}
+      propertyPath: menu
+      value: 
+      objectReference: {fileID: 1989980409}
+    - target: {fileID: 496484641159114272, guid: 8763ea77fc25a4948863f82e9cd88cc7, type: 3}
+      propertyPath: buttons
+      value: 
+      objectReference: {fileID: 1989980405}
     - target: {fileID: 616162416180952207, guid: 8763ea77fc25a4948863f82e9cd88cc7, type: 3}
       propertyPath: m_Name
       value: duck_clock
@@ -5412,13 +5433,54 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 9140474200695005659, guid: 8763ea77fc25a4948863f82e9cd88cc7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140474200695005659, guid: 8763ea77fc25a4948863f82e9cd88cc7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140474200695005659, guid: 8763ea77fc25a4948863f82e9cd88cc7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1770044022}
+    - target: {fileID: 9140474200695005659, guid: 8763ea77fc25a4948863f82e9cd88cc7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140474200695005659, guid: 8763ea77fc25a4948863f82e9cd88cc7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: toggleButtons
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140474200695005659, guid: 8763ea77fc25a4948863f82e9cd88cc7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PomoDuckControls, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140474200695005659, guid: 8763ea77fc25a4948863f82e9cd88cc7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: DuckControls, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140474200695005659, guid: 8763ea77fc25a4948863f82e9cd88cc7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2680599763042293900, guid: 8763ea77fc25a4948863f82e9cd88cc7, type: 3}
+    - {fileID: 3290762302256320923, guid: 8763ea77fc25a4948863f82e9cd88cc7, type: 3}
+    - {fileID: 496484641159114272, guid: 8763ea77fc25a4948863f82e9cd88cc7, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3810820913183894908, guid: 8763ea77fc25a4948863f82e9cd88cc7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1989980406}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 616162416180952207, guid: 8763ea77fc25a4948863f82e9cd88cc7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1770044021}
+    - targetCorrespondingSourceObject: {fileID: 616162416180952207, guid: 8763ea77fc25a4948863f82e9cd88cc7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1770044022}
   m_SourcePrefab: {fileID: 100100000, guid: 8763ea77fc25a4948863f82e9cd88cc7, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

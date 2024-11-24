@@ -7,13 +7,13 @@ using UnityEngine.UI;
 public class DuckControls : MonoBehaviour
 {
     [SerializeField] GameObject buttons;
-    [SerializeField] Outline outline;
     [SerializeField] MenuButtons menu;
     [SerializeField] CanvasGroup welcomeMessage;
  
     private bool buttonsOpen = false;
 
     public void ButtonClick(){
+        Debug.Log("button clicked");
         if (UIManager.instance.State == "timerSettings"){
             menu.TimerSettings();
             return;
