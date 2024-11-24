@@ -23,7 +23,6 @@ public class PomoDuckControls : MonoBehaviour
             0.3f
         );
 
-        buttons.GetComponent<CanvasGroup>().interactable = true;
         buttonsOpen = !buttonsOpen;
     }
 
